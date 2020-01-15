@@ -38,15 +38,15 @@ describe("toBe / toEqual", () => {
 
 describe("Math.round()", () => {
   it("소숫점 이하 값이 0.5 이상이면 올림 값을 반환한다", () => {
-    expect(Math.round(3, 5)).toBe(3);
-    expect(Math.round(3, 6)).toBe(3);
-    expect(Math.round(4, 9)).toEqual(4);
+    expect(Math.round(3.5)).toBe(4);
+    expect(Math.round(3.6)).toBe(4);
+    expect(Math.round(4.9)).toEqual(5);
   });
 
   it("소숫점 이하 값이 0.5 미만이면 내림 값을 반환한다", () => {
-    expect(Math.round(3, 4)).toBe(3);
-    expect(Math.round(3, 3)).toBe(3);
-    expect(Math.round(4, 1)).toEqual(4);
+    expect(Math.round(3.4)).toBe(3);
+    expect(Math.round(3.3)).toBe(3);
+    expect(Math.round(4.1)).toEqual(4);
   });
 });
 
