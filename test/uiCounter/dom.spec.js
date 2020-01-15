@@ -31,7 +31,7 @@ it("- 버튼 클릭시 1 감소한다.", () => {
   createUICounter(container);
   fireEvent.click(getByTestId(container, "btn-dec"));
 
-  expect(getByTestId(container, "value")).toHaveTextContent("-1");
+  expect(getByTestId(container, "value").textContent).toBe("-1");
 });
 
 it("Max값인 경우 + 버튼이 disabled 상태가 되며 클릭해도 증가하지 않는다.", () => {
