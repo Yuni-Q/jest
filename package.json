@@ -1,0 +1,52 @@
+{
+  "name": "javascript-testing",
+  "version": "1.0.0",
+  "description": "javascript testing training",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch",
+    "test:basic": "jest test/basic.spec.js --watch",
+    "test:util": "jest test/util.spec.js --watch",
+    "test:counter": "jest test/counter.spec.js --watch",
+    "test:uiCounter": "jest test/uiCounter/dom.spec.js --watch",
+    "test:validator": "jest test/validator.spec.js --watch",
+    "test:pagination": "jest test/pagination.spec.js --watch",
+    "test:coverage": "jest --coverage",
+    "app:uiCounter": "parcel uiCounter.html",
+    "app:validator": "parcel validator.html",
+    "app:pagination": "parcel pagination.html",
+    "api:pagination": "node server/albums",
+    "cypress:open": "cypress open"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "jest-serializer-html"
+    ]
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@testing-library/cypress": "^4.1.1",
+    "@testing-library/dom": "^6.0.1",
+    "@testing-library/jest-dom": "^4.0.0",
+    "axios-mock-adapter": "^1.17.0",
+    "babel-jest": "^24.8.0",
+    "cypress": "^3.4.1",
+    "diffable-html": "^4.0.0",
+    "jest": "^24.8.0",
+    "jest-serializer-html": "^7.0.0",
+    "parcel": "^1.12.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "bootstrap": "^4.1.1",
+    "core-js": "^3.2.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jquery": "^3.3.1",
+    "tui-pagination": "^3.2.0"
+  }
+}
