@@ -1,9 +1,3 @@
-import '@testing-library/cypress/add-commands';
-
-beforeEach(() => {
-
-});
-
 it('생성시 버튼과 초기값을 렌더링한다.', () => {
 
 });

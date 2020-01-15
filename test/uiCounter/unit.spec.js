@@ -1,9 +1,9 @@
 import '@testing-library/jest-dom/extend-expect';
-import {getByText, fireEvent} from '@testing-library/dom';
-import {createUICounter} from '../../src/uiCounter/uiCounter';
-import {createCounter} from '../../src/uiCounter/counter';
+import { getByText, fireEvent } from '@testing-library/dom';
+import { createUICounter } from '../../src/uiCounter/counter';
+import { createCounter } from '../../src/backup/counter';
 
-jest.mock('../../src/uiCounter/counter');
+jest.mock('../../src/backup/counter');
 
 let container;
 
@@ -61,7 +61,9 @@ it('isMin/isMax 값이 true이면 -/+ 버튼은 disabled 상태가 된다.', () 
 
 it('+ 버튼 클릭시 counter의 inc()를 호출한 후 다시 렌더링한다.', () => {
   let value = 10;
-  const counterInc = jest.fn().mockImplementation(() => {value = 11});
+  const counterInc = jest.fn().mockImplementation(() => {
+    value = 11;
+  });
   createCounter.mockImplementation(() => ({
     val: () => value,
     isMin: () => false,
@@ -76,10 +78,11 @@ it('+ 버튼 클릭시 counter의 inc()를 호출한 후 다시 렌더링한다.
   expect(getByText(container, '11')).toBeVisible();
 });
 
-
 it('- 버튼 클릭시 counter의 dec()를 호출한 후 다시 렌더링한다.', () => {
   let value = 10;
-  const counterDec = jest.fn().mockImplementation(() => {value = 9});
+  const counterDec = jest.fn().mockImplementation(() => {
+    value = 9;
+  });
   createCounter.mockImplementation(() => ({
     val: () => value,
     isMin: () => false,
@@ -93,4 +96,3 @@ it('- 버튼 클릭시 counter의 dec()를 호출한 후 다시 렌더링한다.
   expect(counterDec).toHaveBeenCalled();
   expect(getByText(container, '9')).toBeVisible();
 });
-

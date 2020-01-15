@@ -1,27 +1,31 @@
-export function createCounter(options = {}) {
-  let value = options.initVal || 0;
-  const min = options.min || Number.NEGATIVE_INFINITY;
-  const max = options.max || Number.POSITIVE_INFINITY;
+import $ from 'jquery';
+import { createCounter } from '../backup/counter';
 
-  return {
-    val() {
-      return value;
-    },
-    inc() {
-      if (max > value) {
-        value += 1;
-      }
-    },
-    dec() {
-      if (min < value) {
-        value -= 1;
-      }
-    },
-    isMax() {
-      return max === value;
-    },
-    isMin() {
-      return min === value;
-    }
+export function createUICounter(el, options) {
+  const $el = $(el);
+  const counter = createCounter(options);
+
+  function render() {
+    const val = counter.val();
+    const decDisabled = counter.isMin() ? 'disabled' : '';
+    const incDisabled = counter.isMax() ? 'disabled' : '';
+
+    $el.html(`
+      <button type="button" ${decDisabled} class="btn btn-secondary btn-dec">-</button>
+      <span class="value">${val}</span>
+      <button type="button" ${incDisabled} class="btn btn-primary btn-inc">+</button>
+    `);
   }
+
+  render();
+
+  $el.on('click', '.btn-inc', () => {
+    counter.inc();
+    render();
+  });
+
+  $el.on('click', '.btn-dec', () => {
+    counter.dec();
+    render();
+  });
 }

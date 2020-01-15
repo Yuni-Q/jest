@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import {createUICounter} from './uiCounter';
+import { createUICounter } from './counter';
 
 createUICounter($('#counter'), {
   initVal: 10,
